@@ -1,0 +1,108 @@
+<p>engineer works!</p>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <button class="btn btn-outline-success" type="button"  data-toggle="modal" data-target="#addeng">Add Engineer</button>
+    </form>
+  </nav>
+  <!-- engineer list -->
+  <table class="table table-bordered">
+    <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>emailId</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let eng of engineers">
+        <td>{{eng.id}}</td>
+        <td>{{eng.firstName}}</td>
+        <td>{{eng.lastName}}</td>
+        <td>{{eng.emailId}}</td>
+        <td>
+          <!-- <button class="btn btn-outline-success" type="button"  data-toggle="modal" data-target="#adit">Edit</button>| -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#button" (click)="getEngById(eng.id)" >
+            Edit
+          </button>
+          <button class="btn btn-outline-success" type="button" (click)="deleteEng(eng.id)">Delete</button>
+        </td>
+
+    </tr>
+</table>
+                             <!-- add Engineer -->
+
+<div class="modal fade" id="addeng"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Engineer</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="engineer" >
+                <div class="form-group">
+                  <label for="formGroupExampleInput">FirstName</label>
+                  <input type="text" class="form-control" formControlName="firstName" id="formGroupExampleInput" >
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">LastName</label>
+                  <input type="text" class="form-control" formControlName="lastName" id="formGroupExampleInput2" >
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">EmailId</label>
+                    <input type="text" class="form-control" formControlName="emailId" id="formGroupExampleInput2">
+                  </div>
+              </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="creatEng()">Add Engineer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                                <!-- updateeng -->
+
+
+  <div class="modal fade" id="button"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Engineer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="engineer">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Id</label>
+                <input type="text" name="id" class="form-control" formControlName="id" id="formGroupExampleInput" >
+              </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">FirstName</label>
+                  <input type="text" name="firstName" class="form-control" formControlName="firstName" id="formGroupExampleInput" >
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">LastName</label>
+                  <input type="text" name="lastName" class="form-control" formControlName="lastName" id="formGroupExampleInput2" >
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">EmailId</label>
+                    <input type="text" name="emailId" class="form-control" formControlName="emailId" id="formGroupExampleInput2">
+                  </div>
+              </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateEng()"  data-dismiss="modal">Edit Engineer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
